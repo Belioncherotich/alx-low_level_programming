@@ -1,6 +1,7 @@
 #include "main.h"
+
 /**
- * jack_bauer - prints every minute of a 24-hour day
+ * jack_bauer - Prints every minute of a 24-hour day
  *
  * Description: Prints the time in the format HH:MM
  *              from 00:00 to 23:59.
