@@ -1,9 +1,10 @@
 #include "main.h"
 
 /**
- * main - check the code
+ * times_table - prints the 9 times table
  *
- * Return: Always 0.
+ * Description: Prints the multiplication table
+ *              from 0 to 9.
  */
 void times_table(void)
 {
@@ -21,10 +22,10 @@ void times_table(void)
             else
             {
                 _putchar(',');
-                _putchar(' ');
+                _putchar('\t');
                 if (k < 10)
                 {
-                    _putchar(' ');
+                    _putchar('\t');
                 }
                 else
                 {
