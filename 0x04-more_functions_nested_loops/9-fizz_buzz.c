@@ -1,7 +1,13 @@
 #include <stdio.h>
 
 /**
- * main - prints the numbers from 1 to 100, followed by a new line
+ * main - Prints the numbers from 1 to 100 with specific rules
+ *
+ * Description:
+ * Prints the numbers from 1 to 100, but for multiples of three,
+ * prints "Fizz" instead of the number, for multiples of five prints "Buzz",
+ * and for numbers which are multiples of both three and five, prints "FizzBuzz".
+ * Each number or word is separated by a space.
  *
  * Return: Always 0 (Success)
  */
@@ -11,21 +17,26 @@ int main(void)
 
 	for (i = 1; i <= 100; i++)
 	{
-		if (i % 3 == 0 && i % 5 == 0)
+		if (i % 3 == 0 && i % 5 != 0)
 		{
-			printf("FizzBuzz ");
+			printf("Fizz");
 		}
-		else if (i % 3 == 0)
+		else if (i % 5 == 0 && i % 3 != 0)
 		{
-			printf("Fizz ");
+			printf("Buzz");
 		}
-		else if (i % 5 == 0)
+		else if (i % 3 == 0 && i % 5 == 0)
 		{
-			printf("Buzz ");
+			printf("FizzBuzz");
 		}
 		else
 		{
-			printf("%d ", i);
+			printf("%d", i);
+		}
+
+		if (i != 100)
+		{
+			printf(" ");
 		}
 	}
 
