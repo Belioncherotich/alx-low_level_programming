@@ -1,45 +1,39 @@
 #include "main.h"
+#include <limits.h>
 
 /**
- * _atoi - converts a string to an integer
- * @s: string to be converted
+ * _atoi - Converts a string to an integer
+ * @s: The string to be converted
  *
- * Return: the int converted from the string
+ * Return: The integer converted from the string
  */
 int _atoi(char *s)
 {
-        int a, b, len, f, digit;
+	int sign = 1;
+	int result = 0;
+	int i = 0;
 
-        a = 0;
-        b = 0;
-        len = 0;
-        f = 0;
-        digit = 0;
+	/* Handle the sign */
+	while (s[i] == '-' || s[i] == '+')
+	{
+		if (s[i] == '-')
+			sign *= -1;
+		i++;
+	}
 
-        while (s[len] != '\0')
-                len++;
+	/* Convert the numbers */
+	while (s[i] >= '0' && s[i] <= '9')
+	{
+		/* Check for overflow */
+		if ((result > INT_MAX / 10) || (result == INT_MAX / 10 && (s[i] - '0') > INT_MAX % 10))
+		{
+			/* Return INT_MAX or INT_MIN based on the sign */
+			return (sign == 1) ? INT_MAX : INT_MIN;
+		}
 
-        while (a < len && f == 0)
-        {
-                if (s[a] == '-')
-                        ++a;
+		result = (result * 10) + (s[i] - '0');
+		i++;
+	}
 
-                if (s[a] >= '0' && s[a] <= '9')
-                {
-                        digit = s[a] - '0';
-                        if (b % 2)
-                                digit = -digit;
-                        a = a * 10 + digit;
-                        f = 1;
-                        if (s[a + 1] < '0' || s[a + 1] > '9')
-                                break;
-                        f = 0;
-                }
-                a++;
-        }
-
-        if (f == 0)
-                return 0;
-
-        return a;
+	return result * sign;
 }
